@@ -1,0 +1,34 @@
+apiVersion: kubeadm.k8s.io/v1alpha3
+kind: InitConfiguration
+nodeName: {{nodeHostName}}
+api:
+  advertiseAddress: {{nodeIpAddress}}
+  bindPort: 6443
+etcd:
+  endpoints:
+{% for endpoint in etcdEndpoints %}
+  - {{ endpoint }}
+{% endfor %}
+  caFile: {{pkiPath}}/etcd/ca.crt
+  certFile: {{pkiPath}}/etcd/client.crt
+  keyFile: {{pkiPath}}/etcd/client.key
+imageRepository: {{kubeImageRepo}}
+networking:
+  dnsDomain: {{ dnsDomain }}
+  serviceSubnet: {{ serviceSubnet }}
+  podSubnet: {{ podSubnet }}
+kubernetesVersion: {{ kubernetesVersion }}
+authorizationModes:
+{% for mode in authorizationModes %}
+- {{ mode }}
+{% endfor %}
+token: {{ token }}
+tokenTTL: 0
+selfHosted: false
+apiServerExtraArgs:
+  insecure-bind-address: 0.0.0.0
+  insecure-port: 8080
+  allow-privileged: "true"
+  admission-control: {{ admissionControl }}
+apiServerCertSANs:
+  - 127.0.0.1

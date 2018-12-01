@@ -1,0 +1,20 @@
+{
+  "CN": "KubernetesFrontProxyCA",
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+  },
+  "names": [
+    {
+      "C": "US",
+      "L": "CA",
+      "O": "Kubernetes-Choerodon",
+      "ST": "San Francisco",
+      "OU": "FrontProxy",
+      "OU": "Kubernetes"
+    }
+  ],
+  "ca": {
+    "expiry": "87600h"
+  }
+}

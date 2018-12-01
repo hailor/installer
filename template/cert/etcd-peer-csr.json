@@ -1,0 +1,19 @@
+{
+  "CN": "{{nodeName}}-member",
+  "hosts": [
+    "127.0.0.1",
+    "{{nodeIpAddress}}",
+    "{{nodeHostName}}"
+  ],
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+  },
+  "names": [
+    {
+      "C": "US",
+      "L": "CA",
+      "ST": "San Francisco"
+    }
+  ]
+}
